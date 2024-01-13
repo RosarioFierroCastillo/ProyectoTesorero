@@ -1,0 +1,314 @@
+<body>
+    <div class="contenedor">
+        <div class="form">
+            <h2 class="titulo">Datos de la propiedad</h2>
+            <form id="formCrear" class="Formulario" #form2="ngForm" [formGroup]="UserGroup">
+
+                <p>
+                    <input type="text" placeholder="descripción" formControlName="descripcion" name="descripcion"
+                        [(ngModel)]="lote.descripcion">
+                </p>
+
+                <p>
+                    <select id="tipo" name="tipo" formControlName="tipo" placeholder="Tipo de propiedad"
+                        [(ngModel)]="lote.tipo" required ngModel>
+                        <option [ngValue]="undefined" [disabled]="true">-- Selecciona un tipo de propiedad --</option>
+                        <option value="casa">Casa</option>
+                        <option value="casa">Local</option>
+                        <option value="casa">Terreno</option>
+                    </select>
+                </p>
+
+                <p>
+                    <input type="text" placeholder="dirección" id="direccion" formControlName="direccion"
+                        name="direccion" [(ngModel)]="lote.direccion">
+                </p>
+
+                <p>
+                    <input type="text" placeholder="id_lote" id="id_lote" formControlName="id_lote"
+                        name="id_lote" [(ngModel)]="lote.direccion">
+                </p>
+
+                <!--
+                    
+                <p>
+
+                    <input type="text" placeholder="Nombre" id="propietario" formControlName="propietario"
+                        name="direccion" [(ngModel)]="lote.direccion">
+
+                </p>
+
+                    <select id="id_lote" placeholder="propietario" name="id_propietario"
+                        formControlName="id_propietario" [(ngModel)]="lote.id_propietario" required ngModel>
+                        <option [ngValue]="undefined" [disabled]="true">-- Selecciona un propietario --</option>
+                        <option value={{usuario.id_persona}} *ngFor="let usuario of usuarios">{{usuario.nombre}}
+                            {{usuario.apellido_pat}} {{usuario.apellido_mat}}
+                        </option>
+                    </select>
+                </p>
+
+
+                
+                <h5>o <a>Registra un nuevo propietario</a></h5>
+
+
+-->
+
+
+
+
+                <!--
+                <p>
+                    <label for="fraccionamiento">Fraccionamiento: </label>
+                    <select id="id_fraccionamiento" name="id_fraccionamiento" formControlName="id_fraccionamiento"
+                        [(ngModel)]="lote.id_fraccionamiento" required ngModel (change)="onSelect($any($event.target).value)">
+                        <option value={{fraccionamiento.id_fraccionamiento}}
+                            *ngFor="let fraccionamiento of fraccionamientos">
+                              (click)="fetchDataPersonasFraccionamiento(fraccionamiento.id_fraccionamiento)"
+                            {{fraccionamiento.nombre}}
+                        </option>
+                    </select>
+                </p>
+
+                <p>
+                    <select id="id_lote" placeholder="propietario" name="id_propietario" formControlName="id_propietario"
+                        [(ngModel)]="lote.id_propietario" required ngModel>
+                        <option hidden selected>Selecciona un propietario</option>
+                        <option value={{usuario.id_persona}} *ngFor="let usuario of usuarios">{{usuario.nombre}} {{usuario.apellido_pat}} {{usuario.apellido_mat}}
+                        </option>
+                    </select>
+                </p>
+                 -->
+                <!--
+                <p>
+                    <select id="id_renta" name="id_renta" placeholder="arrendatario" formControlName="id_renta" [(ngModel)]="lote.id_renta"
+                        required ngModel>
+                        <option hidden selected>Selecciona un arrendatario</option>
+                        <option value=0>N/A</option>
+                        <option value={{usuario.id_persona}} *ngFor="let usuario of usuarios">{{usuario.nombre}}
+                            {{usuario.apellido_pat}} {{usuario.apellido_mat}}
+                        </option>
+                    </select>
+                </p>
+                -->
+            </form>
+        </div>
+
+
+
+
+
+        <div class="form">
+           <h2 class="titulo" id="prop">Propietario</h2>   
+
+            <div class="tabs">
+
+
+
+                <ul class="tabs-panels">
+
+                    <li class="tabs-panel">
+
+                        <form id="formCrear" class="Formulario" #form1="ngForm" [formGroup]="UserGroup1">
+                            <h5>Invita al propietario del lote a formar parte de tu comunidad en línea</h5>
+
+                            <p>
+                              <input type="text" formControlName="correo" name="correo" placeholder="Correo electrónico" [(ngModel)]="correo_invitado">
+                            </p>
+                            <div class="botones-container">
+                                <button class="boton-verde" (click)="agregarConCorreo(lote.descripcion, lote.tipo, lote.direccion)">Agregar</button>
+                              </div>
+                          </form>
+                    </li>
+                    <li class="tabs-panel">
+
+                        <form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup1">
+                            <p>
+                              <input type="text" formControlName="nombre" name="nombre" placeholder="Nombre del propietario" [(ngModel)]="usuario.nombre">
+                            </p>
+                            <p>
+                              <input type="text" id="apellidoP" formControlName="apellido_pat" name="apellido_pat" placeholder="Apellido paterno" [(ngModel)]="usuario.apellido_pat">
+                            </p>
+                            <p>
+                              <input type="text" id="apellidoM" formControlName="apellido_mat" name="apellido_mat" placeholder="Apellido materno" [(ngModel)]="usuario.apellido_mat">
+                            </p>
+                            <p>
+                              <input type="text" id="telefono" formControlName="telefono" name="telefono" placeholder="Teléfono" [(ngModel)]="usuario.telefono">
+                            </p>
+                            <p>
+                              <input type="date" id="fechaNacimiento" name="fecha_nacimiento" formControlName="fecha_nacimiento" placeholder="Fecha de nacimiento" [(ngModel)]="usuario.fecha_nacimiento" required ngModel>
+                            </p>
+                            <div class="botones-container">
+                                <button class="boton-verde"  (click)="agregar_usuario(form.value, form2.value)">Agregar</button>
+                              </div>
+                          </form>
+                    </li> 
+                </ul>
+                <ul class="tabs-thumbs" class="titulo">
+                   
+                    <li class="tabs-thumb"><a class="eti">o unir al propietario a la comunidad en línea</a></li>
+                    <li class="tabs-thumb"><a class="eti">el propietario no cuenta con un correo electrónico</a></li>
+                    
+
+                </ul>
+            </div>
+            </div>
+
+<!--
+            <div class="tabs">
+
+                <ul class="tabs-thumbs">
+                    <li class="tabs-thumb"><a class="eti">Formulario</a></li>
+                    <li class="tabs-thumb"><a class="eti">Correo</a></li>
+                </ul>
+                <ul class="tabs-panels">
+                    <li class="tabs-panel">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id debitis aspernatur voluptatum
+                        repellat nisi animi, harum excepturi provident, reprehenderit reiciendis veritatis, voluptate
+                        cum qui laudantium repudiandae, facere quas eius asperiores!
+                    </li>
+                    <li class="tabs-panel">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo reprehenderit saepe assumenda,
+                        quasi suscipit. Minus aut dicta autem, totam excepturi qui officiis harum, modi corporis iure!
+                        Voluptates, veniam. Totam, facilis.
+                    </li>
+                    <li class="tabs-panel">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore fugit placeat voluptates ad et
+                        blanditiis nisi quia nostrum error! Atque facilis laboriosam eius vel laborum ullam error nobis
+                        asperiores laudantium.
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    -->
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripción</th>
+                <th>Tipo</th>
+                <th>Direccion</th>
+                <th>Propietario</th>
+                <th>Arrendatario</th>
+                <th>Inquilinos</th>
+                <th style="text-align:center;width:200px;">
+                    Editar propiedad
+                </th>
+                <th style="text-align:center;width:200px;">
+                    Borrar propiedad
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr mat-row *ngFor="let lote of lotes; let j=index" matRowDef="columns: displayedcolumns;"
+                (click)="onRowClicked(lote)">
+                <th scope="row">{{lote.id_lote}}</th>
+                <td>{{lote.descripcion}}</td>
+                <td>{{lote.tipo}}</td>
+                <td>{{lote.direccion}}</td>
+                <td>{{lote.id_propietario}}</td>
+                <td>{{lote.id_renta}}</td>
+                <td>
+                    <a class="btn btn-sm text-white btn-success" style="margin: auto;" (click)="AbrirrMenu(lote)">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                </td>
+                <td><a class="btn btn-sm text-white btn-success" style="margin: auto;" (click)="edit(lote)">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-sm text-white btn-danger" style="margin: auto;"
+                        (click)="delete(lote.id_lote)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+-->
+    <div class="login-overlay" *ngIf="AbrirMenu">
+        <div class="login-box">
+            <div class="contenedor1">
+
+                <div class="form">
+                    <h2 class="titulo">Inquilinos</h2>
+
+                    <form id="formCrear" class="Formulario1" #form="ngForm" [formGroup]="UserGroup1">
+                        <label for="nombre" class="labelf">Nombre del inquilino:</label>
+
+                        <select id="id_lote" name="id_usuario" formControlName="id_usuario"
+                            [(ngModel)]="inquilino.id_usuario" #id_usuario required ngModel class="flotante"
+                            (change)="obtener_etiqueta($event)">
+                            <option value={{usuario.id_persona}} *ngFor="let usuario of usuarios">{{usuario.nombre}}
+                                {{usuario.apellido_pat}} {{usuario.apellido_mat}}</option>
+                        </select>
+
+
+                        <label for="direccion" class="labelf">Código de acceso:</label>
+                        <input type="text" id="direccion" formControlName="codigo_acceso" name="codigo_acceso"
+                            class="flotante">
+
+                        <div class="botones-container1">
+                            <button class="boton-verde" (click)="agregar_inquilino(form.value)">Agregar</button>
+                            <button class="boton-azul">Actualizar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <table id="table1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th class="id">Id</th>
+                        <th class="nombre">Nombre</th>
+                        <th>Código de acceso</th>
+                        <th>Intercomunicador</th>
+                        <th style="text-align:center;width:100px;" class="borrar">
+                            Borrar inquilino
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr mat-row (click)="onRowClicked(inquilino)" *ngFor="let inquilino of inquilinos;"
+                        matRowDef="columns: displayedcolumns;">
+                        <th scope="row" class="id">{{inquilino.id_usuario_lote}}</th>
+                        <td class="nombre">{{inquilino.nombre}}</td>
+                        <td>{{inquilino.codigo_acceso}}</td>
+                        <td>{{inquilino.intercomunicador}}</td>
+                        <td class="borrar">
+                            <a class="btn btn-sm text-white btn-danger" style="margin-left:16px;">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"
+                                    (click)="delete_user(inquilino.id_usuario_lote)"></span>
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
